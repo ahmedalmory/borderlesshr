@@ -1,0 +1,799 @@
+{
+	"info": {
+		"_postman_id": "aa0acb41-35d3-452e-a61a-4f3c2a9fc68d",
+		"name": "BorderlessHR API",
+		"description": "A RESTful API for a Job Board platform where Companies can post jobs and Candidates can apply.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Company Name\",\n    \"email\": \"company@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"website\": \"https://example.com\",\n    \"description\": \"Company description\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"register"
+									]
+								},
+								"description": "Register a new company"
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"company@example.com\",\n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"login"
+									]
+								},
+								"description": "Login as a company"
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/company/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"logout"
+									]
+								},
+								"description": "Logout a company"
+							},
+							"response": []
+						},
+						{
+							"name": "Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/company/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"profile"
+									]
+								},
+								"description": "Get company profile"
+							},
+							"response": []
+						}
+					],
+					"description": "Company authentication endpoints"
+				},
+				{
+					"name": "Candidate",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Candidate Name\",\n    \"email\": \"candidate@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"phone\": \"1234567890\",\n    \"bio\": \"Candidate bio\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/candidate/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"register"
+									]
+								},
+								"description": "Register a new candidate"
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"candidate@example.com\",\n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/candidate/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"login"
+									]
+								},
+								"description": "Login as a candidate"
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/candidate/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"logout"
+									]
+								},
+								"description": "Logout a candidate"
+							},
+							"response": []
+						},
+						{
+							"name": "Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/candidate/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"profile"
+									]
+								},
+								"description": "Get candidate profile"
+							},
+							"response": []
+						}
+					],
+					"description": "Candidate authentication endpoints"
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "List Jobs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/jobs?location=New York&is_remote=true&keyword=developer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"jobs"
+									],
+									"query": [
+										{
+											"key": "location",
+											"value": "New York"
+										},
+										{
+											"key": "is_remote",
+											"value": "true"
+										},
+										{
+											"key": "keyword",
+											"value": "developer"
+										}
+									]
+								},
+								"description": "Get a paginated list of published jobs with optional filtering"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Job",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/jobs/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"jobs",
+										"1"
+									]
+								},
+								"description": "Get details for a specific job"
+							},
+							"response": []
+						}
+					],
+					"description": "Public job endpoints"
+				},
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "List Company Jobs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/company/jobs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"jobs"
+									]
+								},
+								"description": "Get a list of jobs created by the authenticated company"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Senior Software Engineer\",\n    \"description\": \"We are looking for a Senior Software Engineer...\",\n    \"location\": \"New York, NY\",\n    \"salary_range\": \"$120,000 - $150,000\",\n    \"is_remote\": true,\n    \"published_at\": \"2023-04-18T00:00:00Z\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/jobs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"jobs"
+									]
+								},
+								"description": "Create a new job"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Senior Software Engineer (Updated)\",\n    \"description\": \"We are looking for a Senior Software Engineer...\",\n    \"location\": \"New York, NY\",\n    \"salary_range\": \"$120,000 - $150,000\",\n    \"is_remote\": true,\n    \"published_at\": \"2023-04-18T00:00:00Z\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/jobs/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"jobs",
+										"1"
+									]
+								},
+								"description": "Update an existing job"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/company/jobs/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"jobs",
+										"1"
+									]
+								},
+								"description": "Delete (soft delete) a job"
+							},
+							"response": []
+						},
+						{
+							"name": "List Job Applications",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/company/jobs/1/applications",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"jobs",
+										"1",
+										"applications"
+									]
+								},
+								"description": "Get a list of applications for a specific job"
+							},
+							"response": []
+						},
+						{
+							"name": "Dashboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{company_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/company/dashboard",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"dashboard"
+									]
+								},
+								"description": "Get dashboard data for the authenticated company"
+							},
+							"response": []
+						}
+					],
+					"description": "Company job management endpoints"
+				},
+				{
+					"name": "Candidate",
+					"item": [
+						{
+							"name": "Apply for Job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "cover_letter",
+											"value": "I am writing to express my interest in the position...",
+											"type": "text"
+										},
+										{
+											"key": "resume",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/candidate/jobs/1/apply",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"jobs",
+										"1",
+										"apply"
+									]
+								},
+								"description": "Apply for a job"
+							},
+							"response": []
+						},
+						{
+							"name": "List Applications",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/candidate/applications",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"applications"
+									]
+								},
+								"description": "Get a list of job applications for the authenticated candidate"
+							},
+							"response": []
+						},
+						{
+							"name": "Dashboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/candidate/dashboard",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"dashboard"
+									]
+								},
+								"description": "Get dashboard data for the authenticated candidate"
+							},
+							"response": []
+						}
+					],
+					"description": "Candidate job application endpoints"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "company_token",
+			"value": "YOUR_COMPANY_TOKEN_HERE",
+			"type": "string"
+		},
+		{
+			"key": "candidate_token",
+			"value": "YOUR_CANDIDATE_TOKEN_HERE",
+			"type": "string"
+		}
+	]
+} 
